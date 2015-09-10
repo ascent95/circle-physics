@@ -57,8 +57,8 @@ int main( int argc, char **argv )
 
         SDL_Event e;
         DotController dctl;
-        Dot dotA ( SCREEN_HEIGHT / 2 - 100, SCREEN_WIDTH / 2, 20, 0.05, 0 );
-        Dot dotB ( SCREEN_HEIGHT / 2 + 300, SCREEN_WIDTH / 2, 30, -0.05, 0 );
+        Dot dotA ( SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100, 10, 0, 0.05, 1 );
+        Dot dotB ( SCREEN_WIDTH / 2 + 100, SCREEN_HEIGHT / 2, 10, -0.05, 0, 1 );
         dctl.add( &dotA );
         dctl.add( &dotB );
 

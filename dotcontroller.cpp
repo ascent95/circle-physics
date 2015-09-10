@@ -21,7 +21,7 @@ void DotController::collisions( std::vector<Dot*>::iterator toCheck )
     {
         if( colliding( start, *toCheck ) )
         {
-            printf( "Colliding!\n" );
+            resolveCollision( start, *toCheck );
         }
     }
 }

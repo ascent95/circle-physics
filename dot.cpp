@@ -2,15 +2,25 @@
 #include "globals.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <math.h>
 
-Dot::Dot( int x, int y, int r, double vx, double vy )
+Dot::Dot( int x, int y, int r, double vx, double vy, double restitution )
 {
     mCirc.x = x;
     mCirc.y = y;
     mCirc.r = r;
-    mvx = vx;
-    mvy = vy;
+    mVelocity.x = vx;
+    mVelocity.y = vy;
     mTime = SDL_GetTicks();
+    if( restitution <= 1 && restitution >= 0 )
+    {
+        mRestitution = restitution;
+    }
+    else
+    {
+        mRestitution = 0;
+    }
+    mInvMass = 1 / ( M_PI * pow( r, 2 ) );
 }
 
 bool Dot::render()
@@ -27,8 +37,8 @@ void Dot::movement()
 {
     Uint32 currTime = SDL_GetTicks();
     Uint32 diffTime = currTime - mTime;
-    mCirc.x += mvx * diffTime;
-    mCirc.y += mvy * diffTime;
+    mCirc.x += mVelocity.x * diffTime;
+    mCirc.y += mVelocity.y * diffTime;
     mTime = currTime;
 }
 
@@ -42,3 +52,17 @@ void Dot::setCircle( Circle *c )
     mCirc = *c;
 }
 
+Vec2d *Dot::getVelocity()
+{
+    return &mVelocity;
+}
+
+double Dot::getRestitution()
+{
+    return mRestitution;
+}
+
+double Dot::getInvMass()
+{
+    return mInvMass;
+}

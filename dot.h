@@ -8,11 +8,16 @@ struct Circle
     double x, y, r;
 };
 
+struct Vec2d
+{
+    double x, y;
+};
+
 class Dot
 {
     public:
 
-        Dot( int x, int y, int r, double vx, double vy );
+        Dot( int x, int y, int r, double vx, double vy, double restitution );
 
         ~Dot() {}
 
@@ -27,10 +32,16 @@ class Dot
         void setY( int argy );
         void setR( int argr );
 
+        Vec2d *getVelocity();
+        double getRestitution();
+        double getInvMass();
+
     private:
         Circle mCirc;
-        double mvx, mvy;
+        double mRestitution;
         Uint32 mTime;
+        Vec2d mVelocity;
+        double mInvMass;
 };
 
 #endif // DOT_H_INCLUDED
