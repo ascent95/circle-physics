@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1441890193 source:/home/matt/Documents/circle-physics/main.cpp
+1441890798 source:/home/matt/Documents/circle-physics/main.cpp
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<stdio.h>
@@ -7,7 +7,7 @@
 	"dotcontroller.h"
 	"dot.h"
 
-1441889906 source:/home/matt/Documents/circle-physics/collisions.cpp
+1441891779 source:/home/matt/Documents/circle-physics/collisions.cpp
 	"dot.h"
 	"collisions.h"
 	<cmath>

@@ -28,12 +28,13 @@ void resolveCollision( Dot *a, Dot *b )
     n = find_n( a, b );
     u = find_u( a, b );
     printf( "n is (%f,%f) and u is (%f,%f) and e is %f\n", n.x, n.y, u.x, u.y, maxRestitution);
-    if( u.x >= 0 && u.y >= 0 )
+    double velAlongNormal = dotProduct( n, u );
+    if( velAlongNormal > 0 )
     {
         printf( "Already separating!\n" );
         return;
     }
-    double j = ( 1 + maxRestitution ) * dotProduct( n, u );
+    double j = ( 1 + maxRestitution ) * velAlongNormal;
     double ainv = a->getInvMass();
     double binv = b->getInvMass();
 
